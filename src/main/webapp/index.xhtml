@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head />
+<h:body >
+    <h2>Autoriai:</h2>
+    <ol>
+        <ui:repeat value="#{authors.allAuthors}" var="author">
+            <li>
+                #{author.name} #{author.surname}
+                <ul>
+                    <ui:repeat value="#{author.books}" var="book">
+                        <li>
+                            #{book.title}; ISBN: #{book.isbn}
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <title>Prideti autoriu</title>
+        <label>Vardas</label>
+        <h:inputText value="#{authorsMyBatis.authorToCreate.name}" required="true" />
+        <label>Pavarde</label>
+        <h:inputText value="#{authorsMyBatis.authorToCreate.surname}" required="true" />
+        <h:commandButton value="Prideti autoriu" actionListener="#{authorsMyBatis.createAuthor}" action="index?faces-redirect=true" />
+    </h:form>
+    <hr />
+    <h:form>
+        <title>Prideti knyga</title>
+        <label>Pavadinimas</label>
+        <h:inputText value="#{books.bookToCreate.title}" required="true" />
+<!--        <label>ISBN</label>-->
+<!--        <h:inputText value="#{books.bookToCreate.isbn}" required="true" />-->
+        <label>Autorius</label>
+        <h:inputText value="#{books.authorsId}" required="true" />
+        <h:commandButton value="Prideti knyga" actionListener="#{books.createBook}" action="index?faces-redirect=true" />
+    </h:form>
+</h:body>
+</html>
