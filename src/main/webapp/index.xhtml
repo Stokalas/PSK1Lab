@@ -36,10 +36,14 @@
         <title>Prideti knyga</title>
         <label>Pavadinimas</label>
         <h:inputText value="#{books.bookToCreate.title}" required="true" />
-<!--        <label>ISBN</label>-->
-<!--        <h:inputText value="#{books.bookToCreate.isbn}" required="true" />-->
+        <label>ISBN</label>
+        <h:inputText value="#{books.bookToCreate.isbn}" required="false" />
         <label>Autorius</label>
-        <h:inputText value="#{books.authorsId}" required="true" />
+        <h:selectManyMenu value="#{books.authorsId}">
+            <f:selectItems value="#{authors.allAuthors}" var="author1"
+                           itemValue="#{author1.id}" itemLabel="#{author1.name} #{author1.surname}">
+            </f:selectItems>
+        </h:selectManyMenu>
         <h:commandButton value="Prideti knyga" actionListener="#{books.createBook}" action="index?faces-redirect=true" />
     </h:form>
 </h:body>

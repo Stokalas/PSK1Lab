@@ -24,9 +24,13 @@ public class Books {
 
     @Inject IsbnGenerator isbnGenerator;
 
+//    @Getter
+//    @Setter
+//    private String authorsId;
+
     @Getter
     @Setter
-    private String authorsId;
+    private int[] authorsId;
 
     @Getter
     @Setter
@@ -39,12 +43,13 @@ public class Books {
         this.booksDAO.persist(bookToCreate);
     }
 
+    @Transactional
     public void setAuthorById() {
-        List<String> idList = Arrays.asList(authorsId.split(","));
+//        List<String> idList = Arrays.asList(authorsId.split(","));
         List<Author> list = bookToCreate.getAuthors();
-        for (String id : idList) {
-            int temp = Integer.parseInt(id);
-            list.add(authorsDAO.findOne(temp));
+        for (int id : authorsId) {
+//            int temp = Integer.parseInt(id);
+            list.add(authorsDAO.findOne(id));
         }
         bookToCreate.setAuthors(list);
     }
