@@ -16,7 +16,7 @@
                 <ul>
                     <ui:repeat value="#{author.books}" var="book">
                         <li>
-                            #{book.title}; ISBN: #{book.isbn}
+                            <h:link value="#{book.title}; ISBN: #{book.isbn}" outcome="bookDetails?bookId=#{book.id}" />
                         </li>
                     </ui:repeat>
                 </ul>

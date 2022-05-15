@@ -28,4 +28,8 @@ public class AuthorsDAO {
     public Author findOne(Integer id) {
         return em.find(Author.class, id);
     }
+
+    public Author update(Author author) {
+        return em.merge(author);
+    }
 }

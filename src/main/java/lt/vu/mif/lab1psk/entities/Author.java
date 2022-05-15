@@ -22,6 +22,10 @@ public class Author implements Serializable {
     private String name;
     private String surname;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
     @ManyToMany(mappedBy="authors")
     private List<Book> books = new ArrayList<>();
 

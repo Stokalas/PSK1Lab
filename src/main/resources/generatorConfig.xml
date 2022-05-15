@@ -19,9 +19,11 @@
 
         <table schema="public" tableName="book">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <ignoreColumn column="opt_lock_version" />
         </table>
         <table schema="public" tableName="author">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <ignoreColumn column="opt_lock_version" />
         </table>
         <table schema="public" tableName="publisher">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />

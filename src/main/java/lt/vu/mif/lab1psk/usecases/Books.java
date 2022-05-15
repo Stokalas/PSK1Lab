@@ -7,11 +7,11 @@ import lt.vu.mif.lab1psk.entities.Book;
 import lt.vu.mif.lab1psk.persistence.AuthorsDAO;
 import lt.vu.mif.lab1psk.persistence.BooksDAO;
 import lt.vu.mif.lab1psk.services.IsbnGenerator;
+import lt.vu.mif.lab1psk.services.StandardIsbnGenerator;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 
 @Model
@@ -22,7 +22,9 @@ public class Books {
     @Inject
     private AuthorsDAO  authorsDAO;
 
-    @Inject IsbnGenerator isbnGenerator;
+    @Inject
+//    IsbnGenerator isbnGeneraxtor;
+    StandardIsbnGenerator isbnGenerator;
 
 //    @Getter
 //    @Setter

@@ -16,7 +16,6 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
-
     private String title;
 
     @Size(max = 17)
@@ -24,6 +23,11 @@ public class Book implements Serializable {
 
     @ManyToOne
     private Publisher publisher;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
 
     @ManyToMany
     @JoinTable(name="BOOK_AUTHOR")
