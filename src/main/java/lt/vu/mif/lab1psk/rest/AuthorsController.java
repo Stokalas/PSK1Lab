@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,8 +78,10 @@ public class AuthorsController {
 
             authorsDAO.persist(author);
 
-            return Response.status(Response.Status.CREATED).build();
+//            return Response.status(Response.Status.CREATED).build();
+            return Response.created(URI.create("/authors/"+ author.getId())).build();
         }
+
         catch (OptimisticLockException ole) {
             return Response.status(Response.Status.CONFLICT).build();
         }
